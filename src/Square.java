@@ -3,11 +3,16 @@ public class Square
     private int Row;
     private int Col;
     private int Type;
+    private final int TYPE;
+
     public Square(int row, int col, int type)
     {
         this.Row=row;
         this.Col=col;
         this.Type=type;
+
+        this.TYPE = type;
+
     }
 
     public int getRow()
@@ -22,6 +27,13 @@ public class Square
     {
         return this.Type;
     }
+
+
+    public void reset()
+    {
+        this.Type = this.TYPE;
+    }
+
 
     public String toString()
     {
