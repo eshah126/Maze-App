@@ -29,7 +29,8 @@ public class Square
     }
 
 
-    public void reset()
+    public void resetSquare()
+
     {
         this.Type = this.TYPE;
     }
