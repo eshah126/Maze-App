@@ -21,6 +21,7 @@ public class Maze {
 
     public Square getStart()
     {
+        
 
     }
 
