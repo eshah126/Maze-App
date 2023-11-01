@@ -14,12 +14,15 @@ public class Maze {
     public boolean loadMaze(String fName)
     {
 
-        Scanner scan = new Scanner(fName);
+        try(Scanner scan = new Scanner(fName))
+        {
+
+        
         scan.next();
         numRows = scan.nextInt();
         scan.next();
         numCols = scan.nextInt();
-        //need error catcher
+        
 	    this.maze = new Square[numRows][numCols];
         for (int row=0; row < numRows; row++) 
          {
@@ -30,6 +33,12 @@ public class Maze {
          }
 
 	    return true;
+        }
+        catch (Exception e)
+        {
+            return false;
+        }
+        
     }
     
     public ArrayList<Square> getNeighbors(Square sq)
@@ -108,4 +117,5 @@ public class Maze {
          return out;
     }
 }
+
 
