@@ -69,7 +69,7 @@ public interface StackADT<T> {
      * Determine if the stack is empty
      * @return true if the size is 0, false otherwise
      */
-    public boolean empty(){
+    public boolean isEmpty(){
 
         return this.first == null;
     }
