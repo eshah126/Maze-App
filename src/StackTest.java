@@ -1,4 +1,6 @@
 public class StackTest(){
+    public static void main(String[] args)
+    {
     StackADT stack = new StackADT();
     T newT = new T();
     T newT2 = new T();
