@@ -32,7 +32,41 @@ abstract class MazeSolver(){
 public MazeSolver(){}
 
 
-abstract boolean isEmpty(){
-     
+abstract boolean isEmpty(){}
+abstract void makeEmpty();
+abstract boolean isEmpty();
+abstract void add(Square sq);
+abstract Square next();
+MazeSolver(Maze maze){};
+Stack mazeStack = new Stack();
+
+
+boolean isSolved(){
+    if(mazeStack.isEmpty){
+        return true
+    }
+    
+    if(mazeStack.peek.getType ==3){
+        return true;
+    }
+
+    String getPath(){
+        if(!isSolved){
+            return "Maze is not solved"
+        } else {
+            
+        }
+    }
+
+
 }
+
+
+
+
+
+
+
+
+
 

@@ -1,4 +1,4 @@
-public class StackTest(){
+public class StackTest() implements StackADT{
     public static void main(String[] args)
     {
     StackADT stack = new StackADT();
