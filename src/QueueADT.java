@@ -18,30 +18,14 @@ public interface QueueADT<T> {
      * @return the front item in the queue
      * @throws NoSuchElementException if the queue is empty
      */
-    public T dequeue()
-    {
-        if (head == null)
-            return null;
-        T element = head.data;
-        head = head.next;
-        if (head == null)    
-        {
-            tail = null;
-        }
-        return element;
-    }
-    T dequeue() throws NoSuchElementException;
+    T dequeue();
 
     /**
      * Return the front item in the queue without removing it
      * @return the front item in the queue
      * @throws NoSuchElementException if the queue is empty
      */
-
-    public T front(){
-        
-    } 
-    T front() throws NoSuchElementException;
+    public T front();
 
     /**
      * Find how many items are in the queue
@@ -53,10 +37,6 @@ public interface QueueADT<T> {
      * Determine if the queue is empty
      * @return true if the size is 0, false otherwise
      */
-    public boolean isEmpty()
-    {
-        return head == null;
-    }
     boolean isEmpty();
     
 
