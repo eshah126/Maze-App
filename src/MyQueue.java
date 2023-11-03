@@ -1,5 +1,5 @@
 
-public class MyQueue<Object> implements QueueADT<Object>
+public class MyQueue<Square> implements QueueADT<Square>
 {
     private Node head;
     private Node tail;
@@ -16,7 +16,7 @@ public class MyQueue<Object> implements QueueADT<Object>
         tail.next = null;
     }
 
-    public void enqueue(Object item)
+    public void enqueue(Square item)
     {
         Node newNode = new Node();
         newNode.data = item;
@@ -25,11 +25,11 @@ public class MyQueue<Object> implements QueueADT<Object>
         size++;
     }
 
-    public Object dequeue()
+    public Square dequeue()
     {
         if (head == null)
             return null;
-        Object element = head.data;
+        Square element = head.data;
         head = head.next;
         if (head == null)    
         {
@@ -38,7 +38,7 @@ public class MyQueue<Object> implements QueueADT<Object>
         return element;
     }
 
-    public Object front()
+    public Square front()
     {
         return head.data;
     }
@@ -66,7 +66,7 @@ public class MyQueue<Object> implements QueueADT<Object>
 
     class Node
     {
-        public Object data;
+        public Square data;
         public Node next;
     }
 
