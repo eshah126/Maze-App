@@ -11,6 +11,7 @@ public class QueueTest {
         System.out.println(queue.front());
         queue.dequeue();
         System.out.println(queue.size());
-        
+        queue.clear();
+        System.out.println(queue.size());
     }
 }
