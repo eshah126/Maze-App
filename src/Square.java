@@ -4,6 +4,7 @@ public class Square
     private int Col;
     private int Type;
     private final int TYPE;
+    private Square caller;
 
     public Square(int row, int col, int type)
     {
@@ -12,6 +13,8 @@ public class Square
         this.Type=type;
 
         this.TYPE = type;
+
+        this.caller = null;
 
     }
 
@@ -26,6 +29,16 @@ public class Square
     public int getType()
     {
         return this.Type;
+    }
+
+    public Square previous()
+    {
+        return caller;
+    }
+
+    public void setPrevious(Square sq)
+    {
+        this.caller = sq;
     }
 
 
