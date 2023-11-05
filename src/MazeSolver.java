@@ -69,17 +69,7 @@ boolean isSolved(){
     }
 }
 
-String getPath()
-{
-    if(!isSolved)
-    {
-        return "Maze is not solved"
-    }
-    else 
-    {
-        
-    }
-}
+
 
 
 Square step()
@@ -90,7 +80,7 @@ Square step()
     }
     else
     {
-        //grab next depending on data structure type, called sq
+        Square sq;
         path.add(sq);
         if(sq.getType()==3)
         {
@@ -101,10 +91,37 @@ Square step()
         for(Square i in sq.getNeighbors())
         {
             i.setPrevious(sq);
-            if(i.getType()!=1)
+            if(i.getType()!=1 && i.previous()==null)
             {
                 //add square to worklist
             }
         }
+        return sq;
     }
+}
+
+void solve()
+{
+    while(step()!= null)
+    {
+        step();
+    }
+}
+
+String getPath()
+{
+    String pathway = "";
+    if(isSolved()==false)
+    {
+        pathway = "Maze is not solved";
+    }
+    else
+    {
+        for(Square i in path)
+        {
+            pathway+= "["+i.getRow()+", "+i.getCol()+"] ";
+        }
+        
+    }
+    return pathway;
 }
