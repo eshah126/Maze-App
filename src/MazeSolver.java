@@ -36,80 +36,83 @@ void solve()
 repeatedly call step() until you get to the exit square or the worklist is empty.
 */
 
-abstract class MazeSolver()
+public abstract class MazeSolver
 {
     
 
-}
 
 
 
 
 
-abstract void makeEmpty();
-abstract boolean isEmpty();
-abstract void add(Square sq);
-abstract Square next();
-private ArrayList<Square> path = new ArrayList<>();
-MazeSolver(Maze maze){
-    maze = new Maze();
-};
+
+    abstract void makeEmpty();
+    abstract boolean isEmpty();
+    abstract void add(Square sq);
+    abstract Square next();
+    private ArrayList<Square> path = new ArrayList<>();
+    Maze maze;
+    MazeSolver(){
+        maze = new Maze();
+    };
 
 
 
-boolean isSolved(){
-    if(worklist.isEmpty())
-    {
-        return true;
-    }
-    
-    if(worklist.getType() ==3)
-    {
-        return true;
-    }
-}
-
-
-
-
-Square step()
-{
-    if(isEmpty()==true)
-    {
-        return null;
-    }
-    else
-    {
-        Square sq;
-        path.add(sq);
-        if(sq.getType()==3)
+    boolean isSolved(){
+        if(this.isEmpty())
         {
-            getPath();
+            return true;
+        }
+    
+        if(this.next().getType() ==3)
+        {
+         return true;
+        }
+     return false;
+    }
+
+
+
+
+    Square step()
+    {
+        if(isEmpty()==true)
+        {
             return null;
         }
-        
-        for(Square i in sq.getNeighbors())
-        {
-            i.setPrevious(sq);
-            if(i.getType()!=1 && i.previous()==null)
+        else
+           {
+            Square sq = this.next();
+            path.add(sq);
+            if(sq.getType()==3)
             {
-                //add square to worklist
+                getPath();
+                return null;
             }
+        
+          for(Square i : maze.getNeighbors(sq))
+          {
+            
+             i.setPrevious(sq);
+             if(i.getType()!=1 && i.previous()==null)
+                {
+                    this.add(i);
+                }
+         }
+         return sq;
         }
-        return sq;
     }
-}
 
-void solve()
-{
-    while(step()!= null)
+    void solve()
     {
-        step();
+     while(step()!= null)
+        {
+           step();
+     }
     }
-}
 
-String getPath()
-{
+    String getPath()
+    {
     String pathway = "";
     if(isSolved()==false)
     {
@@ -117,11 +120,12 @@ String getPath()
     }
     else
     {
-        for(Square i in path)
+        for(Square i : path)
         {
-            pathway+= "["+i.getRow()+", "+i.getCol()+"] ";
+            pathway+= "["+i.getRow()+", "+i.getCol()+"], ";
         }
         
     }
     return pathway;
+    }
 }
