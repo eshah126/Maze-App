@@ -29,37 +29,37 @@ abstract class MazeSolver(){
 
 }
 
-public MazeSolver(){}
+public MazeSolver(){
 
 
 abstract boolean isEmpty(){}
 abstract void makeEmpty();
-abstract boolean isEmpty();
 abstract void add(Square sq);
 abstract Square next();
 MazeSolver(Maze maze){};
-Stack mazeStack = new Stack();
+MyStack mazeStack = new MyStack();
 
 
 boolean isSolved(){
     if(mazeStack.isEmpty){
-        return true
+        return true;
     }
     
-    if(mazeStack.peek.getType ==3){
-        return true;
+    if(mazeStack.peek().getType ==3){
+        return true;}
     }
 
     String getPath(){
-        if(!isSolved){
-            return "Maze is not solved"
+        if(!isSolved()){
+            return "Maze is not solved";
         } else {
             
         }
     }
-
-
 }
+
+
+
 
 
 
