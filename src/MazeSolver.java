@@ -52,7 +52,7 @@ public abstract class MazeSolver
     abstract Square next();
     private ArrayList<Square> path = new ArrayList<>();
     Maze maze;
-    MazeSolver(){
+    MazeSolver(Maze maze){
         maze = new Maze();
     };
 
