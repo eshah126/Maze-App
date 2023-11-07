@@ -66,7 +66,7 @@ public class MyStack<Square> implements StackADT<Square> {
      */
     public boolean isEmpty(){
 
-        return this.first == null;
+        return !(this.first == null);
     }
 
 
