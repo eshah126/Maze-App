@@ -1,11 +1,13 @@
 public class MazeSolverStack extends MazeSolver
 { 
+    MyStack<Square> stack;
     public MazeSolverStack(Maze maze)
     {
         super(maze);
+        stack.add(maze.getStart());
     }
 
-    MyStack<Square> stack;
+    
     public void makeEmpty()
     {
         stack = new MyStack<>();

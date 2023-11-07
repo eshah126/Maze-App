@@ -1,12 +1,13 @@
 public class MazeSolverQueue extends MazeSolver
 {
-    
+    MyQueue<Square> queue;
     public MazeSolverQueue(Maze maze)
     {
         super(maze);
+        queue.add(maze.getStart());
     }
 
-    MyQueue<Square> queue;
+    
     public void makeEmpty()
     {
         queue = new MyQueue<>();
