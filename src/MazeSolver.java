@@ -114,6 +114,7 @@ public abstract class MazeSolver
     String getPath()
     {
     String pathway = "";
+    
     if(isSolved()==false)
     {
         pathway = "Maze is not solved";
