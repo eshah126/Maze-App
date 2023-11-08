@@ -3,23 +3,21 @@ public class MazeSolverQueue extends MazeSolver
     MyQueue<Square> queue;
     public MazeSolverQueue(Maze maze)
     {
+        
         super(maze);
+        makeEmpty();
         //queue.enqueue(maze.getStart());
     }
 
     
     public void makeEmpty()
     {
-        queue = new MyQueue<>();
+        this.queue = new MyQueue<>();
     }
 
     public boolean isEmpty()
     {
-        if(this.queue.front() == null)
-        {
-            return true;
-        }
-        return false;
+        return queue.isEmpty();
     }
 
     public void add(Square sq)

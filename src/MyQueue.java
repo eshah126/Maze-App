@@ -50,7 +50,7 @@ public class MyQueue<Square> implements QueueADT<Square>
 
     public boolean isEmpty()
     {
-        if(head.data==null)
+        if(head==null)
         {
             return true;
         }

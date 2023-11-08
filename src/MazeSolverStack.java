@@ -4,6 +4,7 @@ public class MazeSolverStack extends MazeSolver
     public MazeSolverStack(Maze maze)
     {
         super(maze);
+        makeEmpty();
         //stack.push(maze.getStart());
     }
 

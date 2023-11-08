@@ -46,6 +46,10 @@ public class MyStack<Square> implements StackADT<Square> {
      */
     public Square top()
     {
+        if(nextSqaure.size()==0)
+        {
+            return null;
+        }
         return nextSqaure.get(nextSqaure.size()-1);
     }
 
