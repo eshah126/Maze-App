@@ -46,6 +46,7 @@ public class Square
 
     {
         this.Type = this.TYPE;
+        this.caller = null;
     }
 
 

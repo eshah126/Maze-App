@@ -4,7 +4,7 @@ public class MazeSolverQueue extends MazeSolver
     public MazeSolverQueue(Maze maze)
     {
         super(maze);
-        queue.add(maze.getStart());
+        //queue.enqueue(maze.getStart());
     }
 
     
