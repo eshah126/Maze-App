@@ -31,5 +31,10 @@ public class MazeSolverQueue extends MazeSolver
         return sq;
     }
 
+    public Square nextPeek()
+    {
+        return queue.front();
+    }
+
 
 }

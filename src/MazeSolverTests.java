@@ -7,9 +7,12 @@ public class MazeSolverTests
         MazeSolverQueue queueSolve = new MazeSolverQueue(maze1);
         queueSolve.add(maze1.getStart());
         System.out.println(queueSolve.isEmpty());
-        queueSolve.solve();
-        System.out.println(queueSolve.getPath());
+        //queueSolve.solve();
+        System.out.println("h");
+        System.out.println(queueSolve.step());
+        //System.out.println(queueSolve.getPath());
 
+        /*
         Maze maze2 = new Maze();
         maze1.loadMaze("Maze-App\\src\\maze-2.txt");
         MazeSolverQueue queueSolve2 = new MazeSolverQueue(maze2);
@@ -33,5 +36,6 @@ public class MazeSolverTests
         System.out.println(stackSolve2.isEmpty());
         stackSolve.solve();
         System.out.println(stackSolve2.getPath());
+        */
     }
 }

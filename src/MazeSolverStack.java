@@ -34,6 +34,11 @@ public class MazeSolverStack extends MazeSolver
         return sq;
     }
 
+    public Square nextPeek()
+    {
+        return stack.top();
+    }
+
 
 }
 

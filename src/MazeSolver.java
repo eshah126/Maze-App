@@ -50,6 +50,7 @@ public abstract class MazeSolver
     abstract boolean isEmpty();
     abstract void add(Square sq);
     abstract Square next();
+    abstract Square nextPeek();
     private ArrayList<Square> path = new ArrayList<>();
     Maze maze;
     MazeSolver(Maze maze){
@@ -64,7 +65,7 @@ public abstract class MazeSolver
             return true;
         }
     
-        if(this.next().getType() ==3)
+        if(nextPeek().getType() ==3)
         {
          return true;
         }
@@ -76,30 +77,41 @@ public abstract class MazeSolver
 
     Square step()
     {
-        if(isEmpty()==true)
+        if(isEmpty())
         {
+            System.out.println("Check 1");
             return null;
         }
         else
            {
+            if(nextPeek()==null)
+            {
+                System.out.println("Check 2");
+                return null;
+            }
             Square sq = this.next();
             path.add(sq);
             if(sq.getType()==3)
             {
+                System.out.println("Check 4");
                 getPath();
                 return null;
             }
         
-          for(Square i : maze.getNeighbors(sq))
-          {
+            for(Square i : maze.getNeighbors(sq))
+            {
             
-             i.setPrevious(sq);
-             if(i.getType()!=1 && i.previous()==null)
-                {
-                    this.add(i);
-                }
-         }
-         return sq;
+                System.out.println(i); 
+                
+                if(i.getType()!=1 && i.previous()==null)
+                    {
+                       this.add(i);
+                       i.setPrevious(sq); 
+                    }
+                   
+            }
+         System.out.println("Check 4");
+            return sq;
         }
     }
 

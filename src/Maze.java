@@ -22,13 +22,15 @@ public class Maze {
         numRows = scan.nextInt();
         scan.next();
         numCols = scan.nextInt();
-        
+        int count = 0;
 	    this.maze = new Square[numRows][numCols];
         for (int row=0; row < numRows; row++) 
          {
-    	    	for (int col=0; col < numCols; col++)
+    	    	String rowAt = scan.nextLine();
+                for (int col=0; col < numCols; col++)
                 {
-     	    		maze[row][col] = null;
+     	    		count+=2;
+                    maze[row][col] = new Square(row,col,Integer.parseInt(rowAt.substring(count,count+1)));
     	    	}
          }
 
