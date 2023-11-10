@@ -18,20 +18,20 @@
 
   public class MazeApp extends JFrame implements ActionListener {
     
-        Initial font size for the display
+        //Initial font size for the display
       private static int fontSize = 16;
 
-        Initial interval between animation in milliseconds
+        //Initial interval between animation in milliseconds
       private static int timerInterval = 500; 
     
       private static final long serialVersionUID = 6228378229836664288L;
 
-        Fields for internal data representation
+        //Fields for internal data representation
       private Maze maze;
   	private MazeSolver solver;
   	private boolean mazeLoaded;
     
-        Fields for GUI interface
+        //Fields for GUI interface
   	private JTextField filename;
   	private JTextField timerField;
   	private JTextField fontField;
@@ -49,20 +49,20 @@
        * Constructor -- does most of the work setting up the GUI.
        */
       public MazeApp() {
-  	  Set up the frame
+  	  //Set up the frame
   	super("Amazing Maze Solver");
   	this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	
-  	  Field for the maze file name
+  	  //Field for the maze file name
   	filename = new JTextField(10);
   	filename.setEditable(false);
   	filename.setText("<no maze loaded>");
 	
-  	  Timer and font size fields
+  	 // Timer and font size fields
   	timerField = new JTextField(5);
   	fontField  = new JTextField(5);
 	
-  	  Glue text and input together
+  	  //Glue text and input together
   	JPanel filenamePanel = new JPanel(new BorderLayout());
   	filenamePanel.add(new JLabel("File: "), "West");
   	filenamePanel.add(filename, "Center");
@@ -79,7 +79,7 @@
   	controls.add(timerPanel);
   	controls.add(fontPanel);
 	
-  	  Create the buttons
+  	 // Create the buttons
   	loadButton = new JButton("load");
   	resetButton = new JButton("reset");
   	quitButton = new JButton("quit");
@@ -87,13 +87,13 @@
   	solveButton = new JButton("start");
   	stepButton = new JButton("step");
 
-  	  places to put all the top menu items
-  	JPanel buttons1 = new JPanel(new GridLayout(1, 3));    top row of buttons
-  	JPanel buttons2 = new JPanel(new GridLayout(1, 3));    bottom row of buttons
-  	JPanel buttonBar = new JPanel(new GridLayout(2, 2));   combined layout of buttons
-  							       and text
+  	 // places to put all the top menu items
+  	JPanel buttons1 = new JPanel(new GridLayout(1, 3));    //top row of buttons
+  	JPanel buttons2 = new JPanel(new GridLayout(1, 3));    //bottom row of buttons
+  	JPanel buttonBar = new JPanel(new GridLayout(2, 2));   //combined layout of buttons
+  							       //and text
 	
-  	  load up the buttons in L to R order
+  	 // load up the buttons in L to R order
   	buttons1.add(loadButton);
   	buttons1.add(resetButton);
   	buttons1.add(quitButton);
@@ -101,47 +101,47 @@
   	buttons2.add(solveButton);
   	buttons2.add(stepButton);
 	
-  	  Glue the components together row by row
-  	buttonBar.add(filenamePanel);   top left
-  	buttonBar.add(buttons1);        top right
-  	buttonBar.add(controls);        bottom left
-  	buttonBar.add(buttons2);        bottom right
-  	  add padding from edges
+  	 // Glue the components together row by row
+  	buttonBar.add(filenamePanel);  // top left
+  	buttonBar.add(buttons1);       // top right
+  	buttonBar.add(controls);       // bottom left
+  	buttonBar.add(buttons2);       // bottom right
+  	  //add padding from edges
   	buttonBar.setBorder(BorderFactory.createEmptyBorder(10,10,0,10));
 	
-  	  Timer for the animations
+  	 // Timer for the animations
   	timer = new Timer(timerInterval, this);
 	
 	
-  	  Set up the bottom area to show the maze and path
+  	 // Set up the bottom area to show the maze and path
   	mazeDisplay = new JTextArea(20, 30);
   	mazeDisplay.setEditable(false);
   	pathDisplay = new JTextArea(4, 30);
   	pathDisplay.setEditable(false);
   	JPanel pane = new JPanel(new BorderLayout());
   	pane.setBorder(BorderFactory.createEmptyBorder(
-                  10,  top
-                  10,  left
-                  10,  bottom
-                  10)  right
+                  10,  //top
+                  10, // left
+                  10,//  bottom
+                  10)  //right
                   );
-  	pane.add(new JScrollPane(mazeDisplay), "Center");   let's maze be biggest
+  	pane.add(new JScrollPane(mazeDisplay), "Center");   //let's maze be biggest
   	pane.add(new JScrollPane(pathDisplay), "South");
 	
-  	  Create the overall layout (buttons on top, maze info below)
+  	  //Create the overall layout (buttons on top, maze info below)
   	JPanel panel = new JPanel(new BorderLayout());
   	panel.add(buttonBar,"North");
   	panel.add(pane);
 	
-  	  add to the frame
+  	 // add to the frame
   	this.getContentPane().add(panel);
 	
-  	  shrink wrap and display
+  	  //shrink wrap and display
   	this.pack();
-  	this.setLocationRelativeTo(null);	  center
+  	this.setLocationRelativeTo(null);	 // center
   	this.setVisible(true);
 
-  	  Actionlisteners
+  	 // Actionlisteners
   	loadButton.addActionListener(this);
   	filename.addActionListener(this);
   	solveButton.addActionListener(this);
@@ -153,7 +153,7 @@
   	timerField.addActionListener(this);
   	fontField.addActionListener(this);
 	
-  	  Set up the class variables
+  	  //Set up the class variables
   	doTimer();
   	doFontSize();
   	mazeLoaded = false;
@@ -199,7 +199,7 @@
   		doStep();
   	}
   	if (e.getSource() == timer) {
-  	      animate a step
+  	     // animate a step
   	    if (mazeLoaded) {
   		doStep();
   	    }
@@ -215,7 +215,7 @@
   	try {
   	    newValue = Integer.parseInt(timerField.getText());
   	} catch (NumberFormatException nfe) {
-  	      do nothing
+  	      //do nothing
   	}
   	if (newValue>0)
   	    timerInterval = newValue;
@@ -232,7 +232,7 @@
   	try {
   	    newValue = Integer.parseInt(fontField.getText());
   	} catch (NumberFormatException nfe) {
-  	      do nothing
+  	    //  do nothing
   	}
   	if (newValue>0)
   	    fontSize = newValue;
@@ -329,7 +329,7 @@
        */
       private void loadFile() {
 
-  	  Let the user pick from a filtered list of files
+  	  //Let the user pick from a filtered list of files
   	JFileChooser chooser = new JFileChooser(new File("."));
   	chooser.setFileFilter(new FileFilter() {
   	    String description = "Maze files";
@@ -357,18 +357,18 @@
               newFile = chooser.getSelectedFile();
               newFileName = newFile.getName();
           } else {
-                if they didn't pick a file, cancel the rest of the update
+                //if they didn't pick a file, cancel the rest of the update
               return;
           }
         
-            Try to load it
+           // Try to load it
           if (! maze.loadMaze(newFile.getPath()) ) {
               JOptionPane.showMessageDialog(this, "Cannot load file: "+newFileName);
           } else {
-                update name without path
+               // update name without path
               filename.setText(newFileName);
             
-                set things up as ready to go
+            //    set things up as ready to go
               solveButton.setText("start");
               solveButton.setBackground(Color.green);
               mazeLoaded=true;
@@ -381,12 +381,12 @@
        * Update both the maze and the path text areas.
        */
       private void updateMaze() {
-  	if (mazeLoaded) {    leave blank until first maze is loaded
+  	if (mazeLoaded) {   // leave blank until first maze is loaded
 	    
-  	      update the maze
+  	    //  update the maze
   	    mazeDisplay.setText(maze.toString());
 
-  	      update the path
+  	    //  update the path
   	    if (solver.isSolved()) {
   		pathDisplay.setText(solver.getPath());
   	    } else {

@@ -3,10 +3,10 @@ public class MazeSolverQueue extends MazeSolver
     MyQueue<Square> queue;
     public MazeSolverQueue(Maze maze)
     {
-        
         super(maze);
         makeEmpty();
-        //queue.enqueue(maze.getStart());
+        add(maze.getStart());
+        System.out.println(maze.getStart());
     }
 
     
@@ -35,6 +35,5 @@ public class MazeSolverQueue extends MazeSolver
     {
         return queue.front();
     }
-
 
 }

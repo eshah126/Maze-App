@@ -41,6 +41,11 @@ public class Square
         this.caller = sq;
     }
 
+    public void visit()
+    {
+        this.Type=4;
+    }
+
 
     public void resetSquare()
 
@@ -67,6 +72,9 @@ public class Square
                 break;
             case 3:
                 out += "E";
+                break;
+            case 4:
+                out += "O";
                 break;
             default:
                 out += "ERROR";

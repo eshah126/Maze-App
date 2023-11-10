@@ -1,11 +1,14 @@
 import java.util.ArrayList;
-
+import java.io.*;
 import java.util.Scanner;
 
 public class Maze {
     private Square[][] maze;
     private int numRows = 0;
     private int numCols = 0;
+    //based off recomendation from Will Wang
+    private Square beginning;
+    private Square end;
 
     public Maze()
     {
@@ -13,31 +16,38 @@ public class Maze {
 
     public boolean loadMaze(String fName)
     {
-
-        try(Scanner scan = new Scanner(fName))
-        {
-
         
-        scan.next();
+        try
+        {
+        Scanner scan = new Scanner(new File(fName));
+        
+        
         numRows = scan.nextInt();
-        scan.next();
         numCols = scan.nextInt();
-        int count = 0;
 	    this.maze = new Square[numRows][numCols];
         for (int row=0; row < numRows; row++) 
          {
-    	    	String rowAt = scan.nextLine();
                 for (int col=0; col < numCols; col++)
                 {
-     	    		count+=2;
-                    maze[row][col] = new Square(row,col,Integer.parseInt(rowAt.substring(count,count+1)));
+     	    		int squareData = scan.nextInt();
+                    maze[row][col] = new Square(row, col, squareData);
+                    if(squareData==2)
+                    {
+                        beginning= maze[row][col];
+                        System.out.println(beginning);
+                    }
+                    if(squareData==3)
+                    {
+                        end= maze[row][col];
+                    }
     	    	}
          }
 
 	    return true;
         }
-        catch (Exception e)
+        catch (FileNotFoundException e)
         {
+            System.out.println(e);
             return false;
         }
         
@@ -47,45 +57,29 @@ public class Maze {
     {
 
 	    ArrayList<Square> neighbors = new ArrayList<>();
-	    neighbors.add(maze[sq.getRow()-1][sq.getCol()]);
-        neighbors.add(maze[sq.getRow()][sq.getCol()+1]);
-        neighbors.add(maze[sq.getRow()+1][sq.getCol()]);
-        neighbors.add(maze[sq.getRow()][sq.getCol()-1]);
-
+        if(maze[sq.getRow()-1][sq.getCol()]!=null)
+	        neighbors.add(maze[sq.getRow()-1][sq.getCol()]);
+        if(maze[sq.getRow()][sq.getCol()+1]!=null)
+            neighbors.add(maze[sq.getRow()][sq.getCol()+1]);
+       if(maze[sq.getRow()+1][sq.getCol()]!=null)
+            neighbors.add(maze[sq.getRow()+1][sq.getCol()]);
+        if(maze[sq.getRow()][sq.getCol()-1]!=null)
+            neighbors.add(maze[sq.getRow()][sq.getCol()-1]);
+        //System.out.println("You found the neighbors!");
         return neighbors;
     }
 
     public Square getStart()
     {
 
-        for (int row=0; row < numRows; row++) 
-         {
-    	    	for (int col=0; col < numCols; col++)
-                {
-     	    		if(this.maze[row][col].getType()==2)
-                    {
-                        return this.maze[row][col];
-                    }
-    	    	}
-         }
-         return null;
+       return beginning;
 
     }
 
     public Square getFinish()
     {
 
-        for (int row=0; row < numRows; row++) 
-         {
-    	    	for (int col=0; col < numCols; col++)
-                {
-     	    		if(this.maze[row][col].getType()==3)
-                    {
-                        return this.maze[row][col];
-                    }
-    	    	}
-         }
-         return null;
+        return end;
     }
 
     public void reset()

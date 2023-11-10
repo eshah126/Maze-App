@@ -51,6 +51,7 @@ public abstract class MazeSolver
     abstract void add(Square sq);
     abstract Square next();
     abstract Square nextPeek();
+    //abstract void remove();
     private ArrayList<Square> path = new ArrayList<>();
     Maze maze;
     MazeSolver(Maze maze){
@@ -77,42 +78,47 @@ public abstract class MazeSolver
 
     Square step()
     {
+        Square sq = null;
+        
         if(isEmpty())
         {
-            System.out.println("Check 1");
-            return null;
-        }
-        else
-           {
-            if(nextPeek()==null)
-            {
-                System.out.println("Check 2");
-                return null;
-            }
-            Square sq = this.next();
-            path.add(sq);
-            if(sq.getType()==3)
-            {
-                System.out.println("Check 4");
-                getPath();
-                return null;
-            }
-        
-            for(Square i : maze.getNeighbors(sq))
-            {
             
-                System.out.println(i); 
-                
-                if(i.getType()!=1 && i.previous()==null)
-                    {
-                       this.add(i);
-                       i.setPrevious(sq); 
-                    }
-                   
-            }
-         System.out.println("Check 4");
             return sq;
         }
+        else
+        {
+            sq = next();
+            if(sq.getType()==3)
+            {
+                //System.out.println("4");
+                getPath();
+                return sq;
+            }
+            else
+            {
+                //System.out.println("5");
+                ArrayList<Square> neighbors = maze.getNeighbors(sq);
+                for(Square i : neighbors)
+                {
+                    System.out.println(i); 
+                    if(i.getType()==0)
+                     {
+                        i.setPrevious(sq);
+                        i.visit();
+                        add(i);
+                     }
+                     else if(i.getType()==3)
+                     {
+                        i.setPrevious(sq);
+                        add(sq);
+                        getPath();
+                        break;
+                     }
+                }
+            }
+        }
+        
+        return sq;
     }
 
     void solve()
@@ -125,20 +131,20 @@ public abstract class MazeSolver
 
     String getPath()
     {
-    String pathway = "";
+        String pathway = "";
     
-    if(isSolved()==false)
-    {
-        pathway = "Maze is not solved";
-    }
-    else
-    {
-        for(Square i : path)
+        if(isSolved()==false)
         {
-            pathway+= "["+i.getRow()+", "+i.getCol()+"], ";
+            return "The maze is not yet solved";
         }
+        else
+        {
+            for(Square i : path)
+            {
+                pathway+= "["+i.getRow()+", "+i.getCol()+"], ";
+            }
         
-    }
-    return pathway;
+        }
+        return pathway;
     }
 }
