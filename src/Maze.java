@@ -57,7 +57,7 @@ public class Maze {
     {
 
 	    ArrayList<Square> neighbors = new ArrayList<>();
-        if(maze[sq.getRow()-1][sq.getCol()]!=null)
+        if(maze[(sq.getRow()-1)][sq.getCol()]!=null)
 	        neighbors.add(maze[sq.getRow()-1][sq.getCol()]);
         if(maze[sq.getRow()][sq.getCol()+1]!=null)
             neighbors.add(maze[sq.getRow()][sq.getCol()+1]);
