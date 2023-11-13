@@ -40,32 +40,27 @@ MazeSolver(Maze maze){};
 MyStack mazeStack = new MyStack();
 
 public Square step(){
+         Square newSqaure = next();
+        ArrayList<Square> nbors = new ArrayList<Square>(maze.getNeighbors(sq));
         System.out.println(nextItem());
         if(isSolved())
             return next();
-
-        Square newSqaure = next();
-        ArrayList<Square> nbors = new ArrayList<Square>(maze.getNeighbors(sq));
         if(!(sq.getType()==2))
             sq.setType(5);
-        for(Square sq: neighbors){
-            System.out.println("sq" + isSolved());
+        for(int i =0;i<nbors.size-1){
+            
             System.out.println(sq.getCol() + ", " + sq.getRow());//return cordinates
 
-        if(sq.isMarked()){ 
-                if(n.getType() == 0))
+        if(!(sq.isSolved())){ 
+                if(sq.getType() == 0))
                 {
                 System.out.println("Done");
                 sq.setPrevious(sq);
-                sq.mark();
-                
                 sq.setType(4);
-                add(sq);
-            }
-        }
-            else if (n.getType() == 3){//if solved
+                add(sq);}
+             if (sq.getType() == 3){//if solved
                 sq.setPrevious(sq);
-                sq.mark();
+               
                 add(sq);
             }
         return sq;
