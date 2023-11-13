@@ -28,11 +28,11 @@ public Myqueue getWorkList(){
 
 
 public void add(Square sq){
-    stack.push(sq);
+    queue.enqueue(sq);
 }
 
 public Square next(){
-    return stack.pop();
+    return queue.dequeue();
 }
 
 
