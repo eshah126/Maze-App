@@ -68,8 +68,9 @@ public Square step(){
                 sq.mark();
                 add(sq);
             }
-        }
         return sq;
+        }
+       
     
 boolean isSolved(){
     if(mazeStack.isEmpty){
