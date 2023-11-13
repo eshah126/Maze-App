@@ -39,7 +39,38 @@ abstract Square next();
 MazeSolver(Maze maze){};
 MyStack mazeStack = new MyStack();
 
+public Square step(){
+        System.out.println(nextItem());
+        if(isSolved())
+            return next();
 
+        Square newSqaure = next();
+        ArrayList<Square> nbors = new ArrayList<Square>(maze.getNeighbors(sq));
+        if(!(sq.getType()==2))
+            sq.setType(5);
+        for(Square sq: neighbors){
+            System.out.println("sq" + isSolved());
+            System.out.println(sq.getCol() + ", " + sq.getRow());//return cordinates
+
+        if(sq.isMarked()){ 
+                if(n.getType() == 0))
+                {
+                System.out.println("Done");
+                sq.setPrevious(sq);
+                sq.mark();
+                
+                sq.setType(4);
+                add(sq);
+            }
+        }
+            else if (n.getType() == 3){//if solved
+                sq.setPrevious(sq);
+                sq.mark();
+                add(sq);
+            }
+        }
+        return sq;
+    
 boolean isSolved(){
     if(mazeStack.isEmpty){
         return true;
@@ -56,7 +87,16 @@ boolean isSolved(){
             
         }
     }
+
+     void solve(){
+        while(!isSolved()){
+            step();
+        }
+    }
 }
+
+
+   
 
 
 
