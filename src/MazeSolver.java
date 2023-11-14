@@ -1,3 +1,4 @@
+
 import java.util.ArrayList;
 
 /*
@@ -88,6 +89,7 @@ public abstract class MazeSolver
         else
         {
             sq = next();
+            System.out.println(sq.getCol()+", "+sq.getRow());
             if(sq.getType()==3)
             {
                 //System.out.println("4");
@@ -96,7 +98,7 @@ public abstract class MazeSolver
             }
             else
             {
-                //System.out.println("5");
+                System.out.println(sq.getCol()+", "+sq.getRow());
                 ArrayList<Square> neighbors = maze.getNeighbors(sq);
                 for(Square i : neighbors)
                 {
@@ -148,3 +150,15 @@ public abstract class MazeSolver
         return pathway;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+

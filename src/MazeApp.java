@@ -1,14 +1,16 @@
-  /**
-   * The CSCI 151 Amazing Maze Solver GUI application.
-   * 
-   * Students should not need to modify anything in this file.
-   * 
-   * @author Benjamin Kuperman (Spring 2012)
-   *
-   * When you are ready to incorporate this class in the project, 
-   * 	select the entire contents of this file and then select the
-   *   Toggle Line Comment item from the Edit menu.
-   */
+
+// /* */
+//  * The CSCI 151 Amazing Maze Solver GUI application.
+//  * 
+//  * Students should not need to modify anything in this file.
+//  * 
+//  * @author Benjamin Kuperman (Spring 2012)
+//  *
+//  * When you are ready to incorporate this class in the project, 
+//  * 	select the entire contents of this file and then select the
+//  *   Toggle Line Comment item from the Edit menu.
+//  */
+
 
   import java.awt.*;
   import java.awt.event.*;
