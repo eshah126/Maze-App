@@ -55,17 +55,22 @@ public class Maze {
     
     public ArrayList<Square> getNeighbors(Square sq)
     {
-
+        int col = sq.getCol();
+        int row = sq.getRow();
+        int left = col-1;
+        int right = col+1;
+        int up = row-1;
+        int down = row+1;
 	    ArrayList<Square> neighbors = new ArrayList<>();
-        if(maze[(sq.getRow()-1)][sq.getCol()]!=null)
-	        neighbors.add(maze[sq.getRow()-1][sq.getCol()]);
-        if(maze[sq.getRow()][sq.getCol()+1]!=null)
-            neighbors.add(maze[sq.getRow()][sq.getCol()+1]);
-       if(maze[sq.getRow()+1][sq.getCol()]!=null)
-            neighbors.add(maze[sq.getRow()+1][sq.getCol()]);
-        if(maze[sq.getRow()][sq.getCol()-1]!=null)
-            neighbors.add(maze[sq.getRow()][sq.getCol()-1]);
-        //System.out.println("You found the neighbors!");
+        if(maze[row][left]!=null)
+	        neighbors.add(maze[row][left]);
+        if(maze[row][right]!=null)
+            neighbors.add(maze[row][right]);
+       if(maze[down][col]!=null)
+            neighbors.add(maze[down][col]);
+        if(maze[up][col]!=null)
+            neighbors.add(maze[up][col]);
+        System.out.println("You found the neighbors!");
         return neighbors;
     }
 
