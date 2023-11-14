@@ -9,6 +9,7 @@ public class Maze {
     //based off recomendation from Will Wang
     private Square beginning;
     private Square end;
+    private ArrayList<Square> neighbors;
 
     public Maze()
     {
@@ -61,16 +62,21 @@ public class Maze {
         int right = col+1;
         int up = row-1;
         int down = row+1;
-	    ArrayList<Square> neighbors = new ArrayList<>();
-        if(maze[row][left]!=null)
+	    neighbors = new ArrayList<>();
+        System.out.println(col+" "+row+" "+left+" "+right+" "+up+" "+down);
+        System.out.println(maze[row][left]);
+        System.out.println(maze[row][right]);
+        System.out.println(maze[up][col]);
+        //System.out.println(maze[down][col]);
+        if(!(left< col)&& !(left> col))
 	        neighbors.add(maze[row][left]);
-        if(maze[row][right]!=null)
+        if(!(right< col)&& !(right> col))
             neighbors.add(maze[row][right]);
-       if(maze[down][col]!=null)
+       if(!(down < row)&& !(down > row))
             neighbors.add(maze[down][col]);
-        if(maze[up][col]!=null)
+        if(!(up < row)&& !(up > row))
             neighbors.add(maze[up][col]);
-        System.out.println("You found the neighbors!");
+        System.out.println(neighbors);
         return neighbors;
     }
 

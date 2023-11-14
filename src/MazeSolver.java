@@ -54,9 +54,9 @@ public abstract class MazeSolver
     abstract Square nextPeek();
     //abstract void remove();
     private ArrayList<Square> path = new ArrayList<>();
-    Maze maze;
+    public Maze maze = new Maze();;
     MazeSolver(Maze maze){
-        maze = new Maze();
+        this.maze = maze;
     };
 
 
@@ -98,11 +98,12 @@ public abstract class MazeSolver
             }
             else
             {
-                System.out.println(sq.getCol()+", "+sq.getRow());
-                ArrayList<Square> neighbors = maze.getNeighbors(sq);
+                //System.out.println(sq.getCol()+", "+sq.getRow());
+                ArrayList<Square> neighbors = this.maze.getNeighbors(sq);
+                System.out.println(neighbors);
                 for(Square i : neighbors)
                 {
-                    System.out.println(i); 
+                    //System.out.println("hi"); 
                     if(i.getType()==0)
                      {
                         i.setPrevious(sq);

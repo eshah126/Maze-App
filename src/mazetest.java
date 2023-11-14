@@ -15,7 +15,7 @@ public mazetest(){
 
 
  //System.out.println(maze1.reset());
- System.out.println(maze1.toString());
+ //System.out.println(maze1.toString());
 
 
 }
