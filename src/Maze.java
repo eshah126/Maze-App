@@ -64,17 +64,17 @@ public class Maze {
         int down = row+1;
 	    neighbors = new ArrayList<>();
         System.out.println(col+" "+row+" "+left+" "+right+" "+up+" "+down);
-        System.out.println(maze[row][left]);
-        System.out.println(maze[row][right]);
-        System.out.println(maze[up][col]);
+        //System.out.println(maze[row][left]+"1");
+        //System.out.println(maze[row][right]+"2");
+        //System.out.println(maze[up][col]+"3");
         //System.out.println(maze[down][col]);
-        if(!(left< col)&& !(left> col))
+        if(!(left< 0))
 	        neighbors.add(maze[row][left]);
-        if(!(right< col)&& !(right> col))
+        if(!(right> numCols-1))
             neighbors.add(maze[row][right]);
-       if(!(down < row)&& !(down > row))
+       if(!(down > numRows-1))
             neighbors.add(maze[down][col]);
-        if(!(up < row)&& !(up > row))
+        if(!(up < 0))
             neighbors.add(maze[up][col]);
         System.out.println(neighbors);
         return neighbors;

@@ -90,14 +90,16 @@ public abstract class MazeSolver
         {
             sq = next();
             System.out.println(sq.getCol()+", "+sq.getRow());
-            if(sq.getType()==3)
+            /*
+            if(isSolved())
             {
                 //System.out.println("4");
                 getPath();
                 return sq;
             }
-            else
-            {
+            */
+            //else
+            //{
                 //System.out.println(sq.getCol()+", "+sq.getRow());
                 ArrayList<Square> neighbors = this.maze.getNeighbors(sq);
                 System.out.println(neighbors);
@@ -118,7 +120,7 @@ public abstract class MazeSolver
                         break;
                      }
                 }
-            }
+            //}
         }
         
         return sq;
