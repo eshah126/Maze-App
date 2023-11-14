@@ -65,6 +65,31 @@ public Square step(){
             }
         return sq;
         }
+
+public String getPath(){
+          if (!this.isSolved() || (myMaze.getFinish().previous == null && this.isEmpty())){
+            return "Maze is not solved";
+        }//before anthing check if not solved
+         //need to make a stack,end sqaure,and mesagestack to display
+        String end = "";
+         Square isFin = myMaze.getFinish();
+         Stack<String> message = new Stack<>();
+        while (!isFin.equals(myMaze.getStart())){
+            if (isFin.startingType != 3){
+                isFin.inFinalPath = true;
+            }
+            message.push(", [" + inFin.getRow() + ", " + inFin.getCol() + "]");//cordinates
+            inFin = inFin.previous;
+        }
+
+        end = end + "[" + isFin.getRow() + ", " + isFin.getCol() + "]";//cordinates
+        while (!message.isEmpty()){
+            end = end + message.pop();
+        }
+
+        return end;
+       
+    }
        
     
 boolean isSolved(){
