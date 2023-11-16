@@ -16,7 +16,7 @@ public class MazeSolverStack extends MazeSolver
 
     public boolean isEmpty()
     {
-        if(this.stack.top() == null)
+        if(stack.top() == null)
         {
             return true;
         }
@@ -25,12 +25,12 @@ public class MazeSolverStack extends MazeSolver
 
     public void add(Square sq)
     {
-        this.stack.push(sq);
+        stack.push(sq);
     }
 
     public Square next()
     {
-        Square sq = this.stack.pop();
+        Square sq = stack.pop();
         return sq;
     }
 

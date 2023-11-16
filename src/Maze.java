@@ -35,7 +35,7 @@ public class Maze {
                     if(squareData==2)
                     {
                         beginning= maze[row][col];
-                        System.out.println(beginning);
+                        //System.out.println(beginning);
                     }
                     if(squareData==3)
                     {
@@ -63,7 +63,7 @@ public class Maze {
         int up = row-1;
         int down = row+1;
 	    neighbors = new ArrayList<>();
-        System.out.println(col+" "+row+" "+left+" "+right+" "+up+" "+down);
+        //System.out.println(col+" "+row+" "+left+" "+right+" "+up+" "+down);
         //System.out.println(maze[row][left]+"1");
         //System.out.println(maze[row][right]+"2");
         //System.out.println(maze[up][col]+"3");
@@ -76,7 +76,7 @@ public class Maze {
             neighbors.add(maze[down][col]);
         if(!(up < 0))
             neighbors.add(maze[up][col]);
-        System.out.println(neighbors);
+        //System.out.println(neighbors);
         return neighbors;
     }
 
@@ -99,7 +99,7 @@ public class Maze {
          {
     	    	for (int col=0; col < numCols; col++)
                 {
-     	    		if(this.maze[row][col].getType()==3)
+     	    		if(this.maze[row][col].getType()==4)
                     {
                         this.maze[row][col].resetSquare();
                     }

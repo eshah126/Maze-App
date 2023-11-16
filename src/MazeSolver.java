@@ -61,17 +61,19 @@ public abstract class MazeSolver
 
 
 
-    boolean isSolved(){
+    boolean isSolved()
+    {
         if(this.isEmpty())
         {
             return true;
         }
     
-        if(nextPeek().getType() ==3)
+        if(nextPeek() !=null && nextPeek().getType() == 3)
         {
          return true;
         }
-     return false;
+
+     return false; 
     }
 
 
@@ -89,7 +91,7 @@ public abstract class MazeSolver
         else
         {
             sq = next();
-            System.out.println(sq.getCol()+", "+sq.getRow());
+            //System.out.println(sq.getCol()+", "+sq.getRow());
             /*
             if(isSolved())
             {
@@ -101,25 +103,37 @@ public abstract class MazeSolver
             //else
             //{
                 //System.out.println(sq.getCol()+", "+sq.getRow());
-                ArrayList<Square> neighbors = this.maze.getNeighbors(sq);
-                System.out.println(neighbors);
-                for(Square i : neighbors)
-                {
+            ArrayList<Square> neighbors = this.maze.getNeighbors(sq);
+                //System.out.println(neighbors);
+            for(Square i : neighbors)
+            {
                     //System.out.println("hi"); 
-                    if(i.getType()==0)
-                     {
-                        i.setPrevious(sq);
-                        i.visit();
-                        add(i);
-                     }
-                     else if(i.getType()==3)
-                     {
-                        i.setPrevious(sq);
-                        add(sq);
-                        getPath();
-                        break;
-                     }
+                    
+                if(i.getType()==0)
+                {
+                    i.setPrevious(sq);
+                    i.visit();
+                    add(i);
+                    path.add(i);
+                    System.out.println(path);
+                    System.out.println(getPath());
                 }
+                else if(i.getType()==3)
+                {
+                    i.setPrevious(sq);
+                    i.visit();
+                    add(sq);
+                    path.add(i);
+                    System.out.println(path);
+                    System.out.println(getPath());
+                    makeEmpty();
+                    if(isSolved())
+                    {
+                        getPath();
+                        return sq;
+                    }
+                }
+            }
             //}
         }
         
@@ -128,7 +142,7 @@ public abstract class MazeSolver
 
     void solve()
     {
-     while(step()!= null)
+     while(step()!= null && isSolved()==false)
         {
            step();
      }

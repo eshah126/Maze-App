@@ -34,6 +34,10 @@ public class MyStack<Square> implements StackADT<Square> {
      */
     public Square pop(){
         /*remove the last one */
+        if(nextSqaure.size()==0)
+        {
+            return null;
+        }
         Square removed = nextSqaure.remove(nextSqaure.size()-1);
         return removed;
     }
