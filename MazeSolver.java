@@ -39,10 +39,16 @@ abstract Square next();
 MazeSolver(Maze maze){};
 MyStack mazeStack = new MyStack();
 
+public boolean check;
+
 public Square step(){
          Square newSqaure = next();
         ArrayList<Square> nbors = new ArrayList<Square>(maze.getNeighbors(sq));
         System.out.println(nextItem());
+         if(isEmpty){
+         return null;
+         done = true;
+         }
         if(isSolved())
             return next();
         if(!(sq.getType()==2))
@@ -60,6 +66,7 @@ public Square step(){
                 add(sq);}
              if (sq.getType() == 3){//if solved
                 sq.setPrevious(sq);
+                check = true
                
                 add(sq);
             }
@@ -93,24 +100,11 @@ public String getPath(){
        
     
 boolean isSolved(){
-    if(mazeStack.isEmpty){
-        return true;
-    }
-    
-    if(mazeStack.peek().getType ==3){
-        return true;}
-    }
-
-    String getPath(){
-        if(!isSolved()){
-            return "Maze is not solved";
-        } else {
-            
-        }
+    return check;
     }
 
      void solve(){
-        while(!isSolved()){
+        while(!check()){
             step();
         }
     }
