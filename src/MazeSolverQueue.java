@@ -22,7 +22,15 @@ public class MazeSolverQueue extends MazeSolver
 
     public void add(Square sq)
     {
-        this.queue.enqueue(sq);
+        boolean found = false;
+        for (int n = 0; n<queue.size();n++){//fixes null pointer error
+            if(queue.nextStep.get(n).equals(sq))
+                found = true;
+        }
+        if(!found && !sq.marked){ 
+            worklist.enqueue(sq);
+        }
+    }
     }
 
     public Square next()
